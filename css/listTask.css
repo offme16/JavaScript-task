@@ -1,4 +1,4 @@
-.list{
+.board-app__list{
     display: flex;  
     margin-top: 50px;
     justify-content: space-around;
@@ -35,7 +35,7 @@ ul{
     margin-bottom: 20px;
     max-width: fit-content;
 }
-.box-backlog{
+.box__title{
     background-color: rgb(211, 211, 211);
     color: #727272;
 }

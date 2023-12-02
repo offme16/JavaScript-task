@@ -1,16 +1,13 @@
 import { createElement } from "../render.js";
-
-function createlistBoardComponentTemplate() {
-  return `
-        <div class="box">
-            <h2 class="box__title">Бэклог</h2>
-        </div>
-              `;
+function createTaskComponentTemplate() {
+  return `<ul class="box__task">
+              <li>Task</li>
+          </ul>`;
 }
 
-export class ListBoardComponent {
+export class taskComponent {
   getTemplate() {
-    return createlistBoardComponentTemplate();
+    return createTaskComponentTemplate();
   }
 
   getElement() {
