@@ -1,6 +1,6 @@
 import { AbstractComponent } from "../abstractComponent.js";
 
-export class TaskComponent extends AbstractComponent {
+export class TaskListComponent extends AbstractComponent {
   constructor({ id, title, status }) {
     super();
     this._id = id;
@@ -9,6 +9,9 @@ export class TaskComponent extends AbstractComponent {
   }
 
   getTemplate() {
-    return `<li>${this._title}</li>`;
+    return `<div class="box ${this._status}">
+      <h2>${this._status}</h2>
+        <ul></ul>
+  </div>`;
   }
 }
