@@ -83,7 +83,7 @@ function renderTaskBoard(taskService, container) {
               taskListComponent.getElement().querySelector("ul")
             );
 
-            e.classList.add("disabled");
+            e.target.classList.add("disabled");
           });
       }
     }
