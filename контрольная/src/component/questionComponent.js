@@ -5,7 +5,6 @@ export class QuestionComponent extends AbstractComponent {
     super();
     this._id = id;
     this._title = title;
-    this._isBool = false;
   }
 
   getTemplate() {
