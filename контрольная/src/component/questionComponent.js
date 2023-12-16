@@ -23,7 +23,6 @@ export class QuestionComponent extends AbstractComponent {
     accordion.addEventListener("click", (event) => {
       if (event.target.classList.contains("accordion-button")) {
         const content = accordion.querySelector(".accordion-content");
-        console.log("jisdhvsudvsdvuis");
         content.style.display =
           content.style.display === "block" ? "none" : "block";
       }
