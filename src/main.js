@@ -8,6 +8,7 @@ import { Constanats } from "./const.js";
 import { TaskListComponent } from "./components/taskListComponent.js";
 import { EmptyTasksComponent } from "./components/emptyTasksComponent.js";
 import { DelBtnComponent } from "./components/delBtnComponent.js";
+import { addTask, deleteTasks, Tasks } from "./api/api.js";
 const bodyElement = document.querySelector(".board-app");
 const addTaskElement = document.querySelector(".addtask-app");
 
@@ -16,14 +17,17 @@ render(new HeaderComponent(), bodyElement, RenderPosition.BEFOREBEGIN);
 const formAddTaskComponent = new FormAddTaskComponent();
 render(formAddTaskComponent, addTaskElement);
 
-formAddTaskComponent.setAddTaskHandler((taskTitle) => {
-  const newTask = { title: taskTitle };
+formAddTaskComponent.setAddTaskHandler((title) => {
+  const newTask = { title: title };
   taskService.create(newTask);
+  const status = "backlog"
+  const task = { title, status }
+  addTask(task)
   refreshTaskBoard();
 });
 function refreshTaskBoard() {
-  taskBoardContainer.getElement().innerHTML = "";
-  renderTaskBoard(taskService, taskBoardContainer);
+  taskBoardContainer.getElement().innerHTML = ""; 
+  renderTaskBoard(taskService, taskBoardContainer); 
 }
 const taskBoardContainer = new ListBoardComponent();
 render(taskBoardContainer, addTaskElement);
@@ -34,7 +38,7 @@ renderTaskBoard(taskService, taskBoardContainer);
 
 function renderTaskBoard(taskService, container) {
   Object.values(Constanats.Status).forEach((status, i) => {
-    const tasksByStatus = taskService.getTasksByStatus(status);
+    const tasksByStatus = taskService.getTasksByStatus(status); 
 
     const taskListComponent = new TaskListComponent({ status });
     render(taskListComponent, container.getElement());
@@ -66,6 +70,10 @@ function renderTaskBoard(taskService, container) {
         document
           .querySelector(".box-del__item")
           .addEventListener("click", (e) => {
+            const delTasks = Tasks
+            .filter(e => e.status === 'delete')
+            .map(e => e._id)
+            deleteTasks(delTasks);
             e.target.parentElement.querySelectorAll("li").forEach((li) => {
               li.remove();
             });
