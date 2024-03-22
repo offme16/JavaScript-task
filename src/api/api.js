@@ -30,10 +30,10 @@ const fetchTasks = () => {
   };
 
   
-  export const deleteTasks = (ids) => {
-    console.log(ids);
+  export const deleteTasks = (id) => {
+    console.log(id);
     axios
-      .delete('http://localhost:5000/tasks/del', { data: { ids } }) // Передаем массив идентификаторов через параметр data
+      .delete('http://localhost:5000/tasks/del', { data: id }) // Передаем массив идентификаторов через параметр data
       .then(response => {
         console.log(`DELETE: tasks are removed`, response.data); // Обрабатываем успешный ответ
       })
